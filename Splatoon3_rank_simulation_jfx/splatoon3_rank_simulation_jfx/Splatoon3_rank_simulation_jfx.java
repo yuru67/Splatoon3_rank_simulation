@@ -1,26 +1,22 @@
 package splatoon3_rank_simulation_jfx;
 
 import java.text.Normalizer;
-import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Splatoon3_rank_simulation_jfx {
 
-	public static void main(String[] args) {
+	public static void splatoon3_rank_simulation_jfx(String win_str, String lose_str, String rank_str, String s_plus_level_str, String rank_point_str) {
 		
 		//変数宣言
 		//入力時に使用
 		int win = 0, lose = 0; //勝ち負け数
-		String win_str = "", lose_str = ""; //勝ち負け数 (String)
+//		String win_str = "", lose_str = ""; //勝ち負け数 (String)
 		String rank = ""; //ウデマエ
 		int s_plus_level = 0; //S+のいくつなのかを保存しておく
-		String s_plus_level_str = ""; //S+のいくつなのかを保存しておく (String)
+//		String s_plus_level_str = ""; //S+のいくつなのかを保存しておく (String)
 		int rank_point = 0; // ウデマエポイント
-		String rank_point_str = ""; //ウデマエポイント (String)
-		int num = 0; //switch用変数
-		int check = 0; // 入力した情報が合っているかどうか判断するときに使用
-		String check_str = ""; // 入力した情報が合っているかどうか判断するときに使用 (String)
+//		String rank_point_str = ""; //ウデマエポイント (String)
 		
 		//計算時に使用
 		double winning_parcentage = 0;//勝率
@@ -39,10 +35,9 @@ public class Splatoon3_rank_simulation_jfx {
 		//カウンター
 		int win_count = 0, lose_count = 0, game_count = 0;
 		double win_par = 0;
+		int error_check = 0;
 		
 		
-		//Scannerクラスのインスタンスを生成
-		Scanner sc = new Scanner(System.in);
 		//正規表現パターン作成
 		Pattern pattern_rank = Pattern.compile("^[CBAS][-\\+]?$"); //C-からS+までパターン作成
 		Pattern pattern_s_plus_level_old= Pattern.compile("^[1-4]?9$"); //9,19,29,39,49のパターン作成
@@ -50,6 +45,59 @@ public class Splatoon3_rank_simulation_jfx {
 		System.out.println("***** *****");
 		System.out.println("Splatoon3 rank simulation start");
 		System.out.println("***** *****");
+		
+		try {
+			//勝ち数を代入
+//			win_str = w;
+			win_str = Normalizer.normalize(win_str, Normalizer.Form.NFKC); //全角を半角に変える
+			win = Integer.parseInt(win_str); //文字列をintに変換
+			System.out.printf("win : %d\n", win);
+			
+			//負け数を代入
+//			lose_str = l;
+			lose_str = Normalizer.normalize(lose_str, Normalizer.Form.NFKC); //全角を半角に変える
+			lose = Integer.parseInt(lose_str); //文字列をintに変換
+			System.out.printf("lose : %d\n", lose);
+			
+			//ウデマエを代入
+//			rank = r;
+			rank = Normalizer.normalize(rank, Normalizer.Form.NFKC); //全角を半角に変える
+			rank = rank.toUpperCase(); //小文字を大文字へ変える
+			System.out.printf("rank : %s\n", rank);	
+			
+			//S+の数値を代入
+//			s_plus_level_str = splus_l;
+			s_plus_level_str = Normalizer.normalize(s_plus_level_str, Normalizer.Form.NFKC); //全角を半角に変える
+			s_plus_level = Integer.parseInt(s_plus_level_str); //文字列をintに変換
+			System.out.printf("s_plus_level : %d\n", s_plus_level);
+			
+			//ウデマエポイント
+//			rank_point_str = r_p;
+			rank_point_str = Normalizer.normalize(rank_point_str, Normalizer.Form.NFKC); //全角を半角に変える
+			rank_point = Integer.parseInt(rank_point_str); //文字列をintに変換
+			System.out.printf("rank_point:%d\n", rank_point);
+			
+			
+			if(win < 0 || lose < 0) { //勝ち数か負け数がマイナスのときエラー表示
+				
+			}
+			
+			//マッチ作成
+			Matcher matcher_rank = pattern_rank.matcher(rank);
+			if (matcher_rank.find() == false) { //ウデマエが正しい文字じゃないときエラー
+				System.out.println("Error! : 正しいウデマエを入力してください !");
+			}
+			
+			if (s_plus_level < 0 || 50 < s_plus_level) { //S+の数値が正しくないときエラー
+				System.out.println("Error! : 正しい数値を入力してください !");
+			}
+			if (rank_point < -9999 || 9999 < rank_point) { //ウデマエの数値が正しくないとえらー
+				System.out.println("Error! : -9999から9999の間で入力してください !");
+			}
+		} catch (Exception e) {
+			System.out.println("Error!");
+			return;
+		}
 		
 /*
 		//必要な情報を入力
@@ -225,22 +273,6 @@ public class Splatoon3_rank_simulation_jfx {
 		}
 */
 		
-		Simulation_home_controller s = new Simulation_home_controller();
-		
-		//Simulation_homeで入力した値を取得
-		try {
-			
-			
-			
-			//win_str = s.text_field_win;
-			win_str = sc.next(); //文字列で入力
-			win_str = Normalizer.normalize(win_str, Normalizer.Form.NFKC); //全角を半角に変える
-			win = Integer.parseInt(win_str); //文字列をintに変換
-			System.out.printf("win : %d\n", win);
-		} catch (Exception e) {
-			System.out.println("Error!");
-			num = 0;
-		} 
 		
 		//実際の勝ち数負け数から勝率を計算
 		winning_parcentage = Calc_win_par.calc_win_par(win, lose);
@@ -337,9 +369,8 @@ public class Splatoon3_rank_simulation_jfx {
 				System.out.printf("ウデマエ: %s\n",rank);
 				System.out.printf("ウデマエポイント: %d\n",rank_point);
 				System.out.printf("S+の数値: %d\n",s_plus_level);
-
 				
-				break;
+				return;
 			}
 		}
 		/*

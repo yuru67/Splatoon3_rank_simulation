@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.control.ToggleGroup;
 
 public class Simulation_home_controller {
 
@@ -22,7 +23,7 @@ public class Simulation_home_controller {
     private URL location;
 
     @FXML // fx:id="text_field_win"
-    TextField text_field_win; // Value injected by FXMLLoader
+    private TextField text_field_win; // Value injected by FXMLLoader
 
     @FXML // fx:id="text_field_lose"
     private TextField text_field_lose; // Value injected by FXMLLoader
@@ -47,6 +48,9 @@ public class Simulation_home_controller {
 
     @FXML // fx:id="button_splus"
     private ToggleButton button_splus; // Value injected by FXMLLoader
+
+    @FXML // fx:id="rank"
+    private ToggleGroup rank; // Value injected by FXMLLoader
 
     @FXML // fx:id="button_start"
     private Button button_start; // Value injected by FXMLLoader
@@ -82,6 +86,11 @@ public class Simulation_home_controller {
         System.out.println(text_field_lose.getText());
         System.out.println(text_field_rank_p.getText());
         System.out.println(text_field_splus_level.getText());
+        if(false) {
+        }
+        else {
+        	
+        }
     }
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
@@ -91,6 +100,7 @@ public class Simulation_home_controller {
         assert button_c != null : "fx:id=\"button_c\" was not injected: check your FXML file 'Splatoon3_rank_simulation_jfx.fxml'.";
         assert button_s != null : "fx:id=\"button_s\" was not injected: check your FXML file 'Splatoon3_rank_simulation_jfx.fxml'.";
         assert button_splus != null : "fx:id=\"button_splus\" was not injected: check your FXML file 'Splatoon3_rank_simulation_jfx.fxml'.";
+        assert rank != null : "fx:id=\"rank\" was not injected: check your FXML file 'Simulation_home.fxml'.";
         assert button_start != null : "fx:id=\"button_start\" was not injected: check your FXML file 'Splatoon3_rank_simulation_jfx.fxml'.";
         assert text_field_lose != null : "fx:id=\"text_field_lose\" was not injected: check your FXML file 'Splatoon3_rank_simulation_jfx.fxml'.";
         assert text_field_rank_p != null : "fx:id=\"text_field_rank_p\" was not injected: check your FXML file 'Splatoon3_rank_simulation_jfx.fxml'.";
