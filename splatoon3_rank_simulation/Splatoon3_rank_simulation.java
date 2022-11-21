@@ -124,7 +124,7 @@ public class Splatoon3_rank_simulation {
 						if (s_plus_level == -1) { //-1が入力されたのでウデマエ入力へ戻る
 							num = 2;
 							continue;
-						} else if (s_plus_level < 0 && 50 < s_plus_level) {
+						} else if (s_plus_level < 0 || 50 < s_plus_level) {
 							System.out.println("Error! : 正しい数値を入力してください !");
 							num = 3;
 							continue;
@@ -150,7 +150,7 @@ public class Splatoon3_rank_simulation {
 					} else if (rank_point == 10000) { //ウデマエS+以外で, 10000が入力されたのでウデマエ入力へ戻る
 						num = 2;
 						continue;
-					} else if (rank_point < -9999 && 9999 < rank_point) {
+					} else if (rank_point < -9999 || 9999 < rank_point) {
 						System.out.println("Error! : -9999から9999の間で入力してください !");
 						num = 4;
 						continue;
