@@ -150,6 +150,9 @@ public class Calc_rank {
 				}
 			}
 		}
+		if (rank_point < -9999) { //マイナスカンストを超えた時, -9999にする
+			rank_point = -9999;
+		}
 		
 		//計算結果をオブジェクト型の配列に格納
 		rank_and_point[0] = rank;

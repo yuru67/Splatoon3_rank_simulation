@@ -1,12 +1,11 @@
 package splatoon3_rank_simulation_jfx;
 
-import java.text.Normalizer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Splatoon3_rank_simulation_jfx {
 
-	public static void splatoon3_rank_simulation_jfx(String win_str, String lose_str, String rank_str, String s_plus_level_str, String rank_point_str) {
+	public static void splatoon3_rank_simulation_jfx(int w, int l, String r, int s_p_l, int r_p) {
 		
 		//変数宣言
 		//入力時に使用
@@ -35,7 +34,6 @@ public class Splatoon3_rank_simulation_jfx {
 		//カウンター
 		int win_count = 0, lose_count = 0, game_count = 0;
 		double win_par = 0;
-		int error_check = 0;
 		
 		
 		//正規表現パターン作成
@@ -47,41 +45,12 @@ public class Splatoon3_rank_simulation_jfx {
 		System.out.println("***** *****");
 		
 		try {
-			//勝ち数を代入
-//			win_str = w;
-			win_str = Normalizer.normalize(win_str, Normalizer.Form.NFKC); //全角を半角に変える
-			win = Integer.parseInt(win_str); //文字列をintに変換
-			System.out.printf("win : %d\n", win);
-			
-			//負け数を代入
-//			lose_str = l;
-			lose_str = Normalizer.normalize(lose_str, Normalizer.Form.NFKC); //全角を半角に変える
-			lose = Integer.parseInt(lose_str); //文字列をintに変換
-			System.out.printf("lose : %d\n", lose);
-			
-			//ウデマエを代入
-//			rank = r;
-			rank = Normalizer.normalize(rank, Normalizer.Form.NFKC); //全角を半角に変える
-			rank = rank.toUpperCase(); //小文字を大文字へ変える
-			System.out.printf("rank : %s\n", rank);	
-			
-			//S+の数値を代入
-//			s_plus_level_str = splus_l;
-			s_plus_level_str = Normalizer.normalize(s_plus_level_str, Normalizer.Form.NFKC); //全角を半角に変える
-			s_plus_level = Integer.parseInt(s_plus_level_str); //文字列をintに変換
-			System.out.printf("s_plus_level : %d\n", s_plus_level);
-			
-			//ウデマエポイント
-//			rank_point_str = r_p;
-			rank_point_str = Normalizer.normalize(rank_point_str, Normalizer.Form.NFKC); //全角を半角に変える
-			rank_point = Integer.parseInt(rank_point_str); //文字列をintに変換
-			System.out.printf("rank_point:%d\n", rank_point);
-			
-			
-			if(win < 0 || lose < 0) { //勝ち数か負け数がマイナスのときエラー表示
-				
-			}
-			
+			//引数を代入
+			win = w;
+			lose = l;
+			rank = r;
+			s_plus_level = s_p_l;
+			rank_point = r_p;
 			//マッチ作成
 			Matcher matcher_rank = pattern_rank.matcher(rank);
 			if (matcher_rank.find() == false) { //ウデマエが正しい文字じゃないときエラー
@@ -91,11 +60,12 @@ public class Splatoon3_rank_simulation_jfx {
 			if (s_plus_level < 0 || 50 < s_plus_level) { //S+の数値が正しくないときエラー
 				System.out.println("Error! : 正しい数値を入力してください !");
 			}
-			if (rank_point < -9999 || 9999 < rank_point) { //ウデマエの数値が正しくないとえらー
+			if (rank_point < -9999 || 9999 < rank_point) { //ウデマエの数値が正しくないとエラー
 				System.out.println("Error! : -9999から9999の間で入力してください !");
 			}
+			
 		} catch (Exception e) {
-			System.out.println("Error!");
+			System.out.println("Catch Error! [simulation_jfx]");
 			return;
 		}
 		

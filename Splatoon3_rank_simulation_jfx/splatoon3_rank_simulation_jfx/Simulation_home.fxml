@@ -35,50 +35,50 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <TextField fx:id="text_field_win" layoutX="198.0" layoutY="30.0" prefHeight="31.0" prefWidth="65.0">
+      <TextField fx:id="text_field_win" layoutX="198.0" layoutY="30.0" prefHeight="31.0" prefWidth="65.0" text="0">
          <font>
             <Font size="15.0" />
          </font>
       </TextField>
-      <TextField fx:id="text_field_lose" layoutX="198.0" layoutY="70.0" prefHeight="31.0" prefWidth="65.0">
+      <TextField fx:id="text_field_lose" layoutX="198.0" layoutY="70.0" prefHeight="31.0" prefWidth="65.0" text="0">
          <font>
             <Font size="15.0" />
          </font>
       </TextField>
-      <TextField fx:id="text_field_rank_p" layoutX="198.0" layoutY="190.0" prefHeight="31.0" prefWidth="65.0">
+      <TextField fx:id="text_field_rank_point" layoutX="198.0" layoutY="190.0" prefHeight="31.0" prefWidth="65.0" text="0">
          <font>
             <Font size="15.0" />
          </font>
       </TextField>
-      <TextField fx:id="text_field_splus_level" layoutX="198.0" layoutY="230.0" prefHeight="31.0" prefWidth="65.0">
+      <TextField fx:id="text_field_splus_level" layoutX="198.0" layoutY="230.0" prefHeight="31.0" prefWidth="65.0" text="0">
          <font>
             <Font size="15.0" />
          </font>
       </TextField>
-        <ToggleButton fx:id="button_c" layoutX="198.0" layoutY="109.0" minWidth="35.0" onAction="#button_c_action" prefHeight="33.0" prefWidth="65.0" text="C">
+        <ToggleButton fx:id="button_c" layoutX="198.0" layoutY="109.0" minWidth="35.0" onAction="#button_c_action" prefHeight="33.0" prefWidth="65.0" selected="true" text="C">
          <font>
             <Font size="15.0" />
          </font>
          <toggleGroup>
-            <ToggleGroup fx:id="rank" />
+            <ToggleGroup fx:id="group_rank" />
          </toggleGroup>
         </ToggleButton>
-        <ToggleButton fx:id="button_b" layoutX="273.0" layoutY="109.0" onAction="#button_b_action" prefHeight="33.0" prefWidth="65.0" text="B" toggleGroup="$rank">
+        <ToggleButton fx:id="button_b" layoutX="273.0" layoutY="109.0" onAction="#button_b_action" prefHeight="33.0" prefWidth="65.0" text="B" toggleGroup="$group_rank">
          <font>
             <Font size="15.0" />
          </font>
         </ToggleButton>
-        <ToggleButton fx:id="button_a" layoutX="348.0" layoutY="109.0" onAction="#button_a_action" prefHeight="33.0" prefWidth="65.0" text="A" toggleGroup="$rank">
+        <ToggleButton fx:id="button_a" layoutX="348.0" layoutY="109.0" onAction="#button_a_action" prefHeight="33.0" prefWidth="65.0" text="A" toggleGroup="$group_rank">
          <font>
             <Font size="15.0" />
          </font>
         </ToggleButton>
-      <ToggleButton fx:id="button_s" layoutX="198.0" layoutY="157.0" mnemonicParsing="false" onAction="#button_s_action" prefHeight="33.0" prefWidth="65.0" text="S" toggleGroup="$rank" AnchorPane.topAnchor="150.0">
+      <ToggleButton fx:id="button_s" layoutX="198.0" layoutY="157.0" mnemonicParsing="false" onAction="#button_s_action" prefHeight="33.0" prefWidth="65.0" text="S" toggleGroup="$group_rank" AnchorPane.topAnchor="150.0">
          <font>
             <Font size="15.0" />
          </font>
       </ToggleButton>
-      <ToggleButton fx:id="button_splus" layoutX="273.0" layoutY="150.0" mnemonicParsing="false" onAction="#button_splus_action" prefHeight="33.0" prefWidth="65.0" text=" S+" toggleGroup="$rank">
+      <ToggleButton fx:id="button_splus" layoutX="273.0" layoutY="150.0" mnemonicParsing="false" onAction="#button_splus_action" prefHeight="33.0" prefWidth="65.0" text=" S+" toggleGroup="$group_rank">
          <font>
             <Font size="15.0" />
          </font>
