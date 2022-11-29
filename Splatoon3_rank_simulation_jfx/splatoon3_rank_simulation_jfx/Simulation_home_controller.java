@@ -26,7 +26,7 @@ public class Simulation_home_controller {
 	//正規表現パターン作成
 	Pattern pattern_rank = Pattern.compile("^[CBAS][-\\+]?$"); //C-からS+までパターン作成
 	//match用変数
-	String win_str, lose_str, rank, splus_level_str, rank_point_str;
+	String win_str, lose_str, rank = "C", splus_level_str, rank_point_str;
 	int win, lose, splus_level, rank_point;
 	
 	
@@ -115,9 +115,23 @@ public class Simulation_home_controller {
             rank_point = Integer.parseInt(rank_point_str); //文字列をintに変換
             splus_level_str = Normalizer.normalize(text_field_splus_level.getText(), Normalizer.Form.NFKC); //全角を半角に変える
             splus_level = Integer.parseInt(splus_level_str); //文字列をintに変換
-            
+            if(true) {
+            	Splatoon3_rank_simulation_jfx.splatoon3_rank_simulation_jfx(win, lose, rank, splus_level, rank_point);
+            	simulation_result();
+            	
+            	//open result window
+//        		FXMLLoader loader = new FXMLLoader(getClass().getResource("Simulation_result.fxml"));
+//        		BorderPane root = (BorderPane) loader.load();
+//        		Simulation_result_controller result_con = new Simulation_result_controller();
+
+            }
+            else {
+            	//Splatoon3_rank_simulation_jfx.splatoon3_rank_simulation_jfx();
+            }
+
         } catch (Exception e) {
-        	System.out.println("Catch Error! [controller]");
+        	System.out.println("Catch Error! [home_controller]");
+			e.printStackTrace();
         }
         
         //アラート
@@ -129,13 +143,6 @@ public class Simulation_home_controller {
         //Matcher matcher_rank = pattern_rank.matcher(rank);
 
 
-        if(true) {
-        	Splatoon3_rank_simulation_jfx.splatoon3_rank_simulation_jfx(win, lose, rank, splus_level, rank_point);
-
-        }
-        else {
-        	//Splatoon3_rank_simulation_jfx.splatoon3_rank_simulation_jfx();
-        }
     }
     void simulation_result() throws IOException {
 
@@ -143,9 +150,17 @@ public class Simulation_home_controller {
 		BorderPane root = (BorderPane) loader.load();
 		Scene scene = new Scene(root);
 		Stage stage = new Stage();
+
+		//ぬるぽエラー
+		Simulation_result_controller result_con = loader.<Simulation_result_controller>getController();
+		result_con.text_area_result.appendText("setText test");
+		result_con.text_area_result.setEditable(false);
+    	System.out.println(result_con.text_area_result.getText());
+		
+		stage.setTitle("Simulation Result");
 		stage.setScene(scene);
 		stage.showAndWait();
-
+		
 	}
 
     @FXML // This method is called by the FXMLLoader when initialization is complete

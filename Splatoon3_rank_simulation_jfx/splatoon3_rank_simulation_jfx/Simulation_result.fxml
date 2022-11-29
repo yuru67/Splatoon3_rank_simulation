@@ -5,12 +5,11 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="splatoon3_rank_simulation_jfx.Simulation_result_controller">
    <center>
       <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <content>
-            <TextArea fx:id="text_area_result" editable="false" prefHeight="398.0" prefWidth="598.0" text="Test&#10;&#10;TextArea">
+            <TextArea fx:id="text_area_result" prefHeight="398.0" prefWidth="598.0" text="Test&#10;&#10;Hello World&#10;">
                <font>
                   <Font size="15.0" />
                </font>

@@ -19,7 +19,7 @@ public class Simulation_result_controller {
     private URL location;
 
     @FXML // fx:id="text_area_result"
-    private TextArea text_area_result; // Value injected by FXMLLoader
+    TextArea text_area_result; // Value injected by FXMLLoader
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
