@@ -17,15 +17,15 @@ public class Calc_pay_point {
 		} else if (rank.equals("B+")) {
 			return 85;
 		} else if (rank.equals("A-")) {
-			return 100;
-		} else if (rank.equals("A")) {
 			return 110;
-		} else if (rank.equals("A+")) {
+		} else if (rank.equals("A")) {
 			return 120;
+		} else if (rank.equals("A+")) {
+			return 130;
 		} else if (rank.equals("S")) {
-			return 150;
+			return 170;
 		} else if (rank.equals("S+")) {
-			return 160;
+			return 180;
 		} else {
 			//存在しないウデマエを入力されたとき
 			return -1;
