@@ -3,12 +3,15 @@ package splatoon3_rank_simulation;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+//降格はコメントアウト済み
+
 public class Calc_rank {
 	public static Object[] calc_rank(String rank, int rank_point, int s_plus_level) {
 		
 		//変数宣言
 		int point_for_calc = s_plus_level;
-		int over_line = 0, under_line = 0;//昇格, 降格ライン
+		int over_line = 0; //昇格ライン
+		//int under_line = 0; //降格ライン
 		int s_plus_level_old = 0;
 		
 		//test
@@ -19,7 +22,7 @@ public class Calc_rank {
 		Pattern pattern_b = Pattern.compile("^B[-\\+]?$"); //B帯
 		Pattern pattern_a = Pattern.compile("^A[-\\+]?$"); //A帯
 		Pattern pattern_s_plus_over = Pattern.compile("^[1-4]?9$"); //9,19,29,39,49のパターン作成
-		Pattern pattern_s_plus_under = Pattern.compile("^[1-4]?0$"); //0,10,20,30,40のパターン作成
+		//Pattern pattern_s_plus_under = Pattern.compile("^[1-4]?0$"); //0,10,20,30,40のパターン作成
 		
 		//マッチ作成
 		Matcher matcher_c = pattern_c.matcher(rank);
@@ -31,37 +34,37 @@ public class Calc_rank {
 		Object[] rank_and_point = {rank, rank_point, s_plus_level};
 		
 		//ウデマエの判定
-		if (matcher_c.find()) { //C帯
+		if (matcher_c.find()) { //C帯 降格無し
 			if (rank_point >= 600) { //昇格戦
 				rank = "B-";
 				rank_point = 100;
-			} else if (600 > rank_point && rank_point >= 400) {
+			} else if (600 > rank_point && rank_point >= 400 && (rank.equals("C-") || rank.equals("C") || rank.equals("C+"))) {
 				rank = "C+";
-			} else if (400 >rank_point && rank_point >= 200) {
+			} else if (400 >rank_point && rank_point >= 200 && (rank.equals("C-") || rank.equals("C"))) {
 				rank = "C";
-			} else {
+			} else if (200 < rank_point && rank.equals("C-")){
 				rank = "C-";
 			}
-		} else if(matcher_b.find()) { //B帯
+		} else if(matcher_b.find()) { //B帯 降格無し
 			if (rank_point >= 850) { //昇格戦
 				rank = "A-";
 				rank_point = 200;
-			} else if (850 > rank_point && rank_point >= 600) {
+			} else if (850 > rank_point && rank_point >= 600 && (rank.equals("B-") || rank.equals("B") || rank.equals("B+"))) {
 				rank = "B+";
-			} else if (600 >rank_point && rank_point >= 350) {
+			} else if (600 >rank_point && rank_point >= 350 && (rank.equals("B-") || rank.equals("B"))) {
 				rank = "B";
-			} else {
+			} else if (350 < rank_point && rank.equals("B-")){
 				rank = "B-";
 			}
-		} else if(matcher_a.find()) { //A帯
+		} else if(matcher_a.find()) { //A帯 降格無し
 			if (rank_point >= 1100) { //昇格戦
 				rank = "S";
 				rank_point = 300;
-			} else if (1100 > rank_point && rank_point >= 800) {
+			} else if (1100 > rank_point && rank_point >= 800 && (rank.equals("A-") || rank.equals("A") || rank.equals("A+"))) {
 				rank = "A+";
-			} else if (800 >rank_point && rank_point >= 500) {
+			} else if (800 >rank_point && rank_point >= 500 && (rank.equals("A-") || rank.equals("A"))) {
 				rank = "A";
-			} else {
+			} else if (500 < rank_point && rank.equals("A-")){
 				rank = "A-";
 			}
 		} else if(rank.equals("S")) { //S
@@ -84,7 +87,7 @@ public class Calc_rank {
 				Matcher matcher_s_plus_over = pattern_s_plus_over.matcher(s_plus_level_str);
 				
 				//S+0,10,20,30,40とマッチ
-				Matcher matcher_s_plus_under = pattern_s_plus_under.matcher(s_plus_level_str);
+				//Matcher matcher_s_plus_under = pattern_s_plus_under.matcher(s_plus_level_str);
 				
 				//test
 				//System.out.printf("rank:%s, rank_point:%d, S+ :%d\n", rank, rank_point, s_plus_level);
@@ -100,7 +103,7 @@ public class Calc_rank {
 				
 				//昇格, 降格ラインを計算
 				over_line = (point_for_calc + 1) * 350 + 300;
-				under_line = point_for_calc * 350 + 300;
+				//under_line = point_for_calc * 350 + 300;
 				//System.out.printf("Over_Line: %d\n", over_line);
 				//System.out.printf("Under_Line: %d\n", under_line);
 				
@@ -131,11 +134,13 @@ public class Calc_rank {
 					//System.out.println("Rank_Up.(S+1-49)");
 				}
 				
+				/*
 				//降格 (S+0,10,20,30,40,50以外)
 				else if((matcher_s_plus_under.find() == false) && (s_plus_level != 50) && (rank_point < under_line)) {
 					s_plus_level--;
 					//System.out.println("Rank_Down.(S+)");
 				}
+				*/
 				
 				//昇格も降格も無しは何もしない
 				else {
@@ -149,6 +154,9 @@ public class Calc_rank {
 					break;
 				}
 			}
+		}
+		if (rank_point < -9999) { //マイナスカンストを超えた時, -9999にする
+			rank_point = -9999;
 		}
 		
 		//計算結果をオブジェクト型の配列に格納
