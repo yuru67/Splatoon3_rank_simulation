@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="splatoon3_rank_simulation_jfx.Simulation_home_controller">
+   <children>
+      <Label layoutX="28.0" layoutY="69.0" prefHeight="31.0" prefWidth="122.0" text="敗北数" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="70.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="28.0" layoutY="109.0" prefHeight="31.0" prefWidth="122.0" text="ウデマエ" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="110.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="30.0" layoutY="190.0" prefHeight="31.0" prefWidth="122.0" text="ウデマエポイント" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="190.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="30.0" layoutY="30.0" prefHeight="31.0" prefWidth="122.0" text="勝利数" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="30.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="30.0" layoutY="242.0" prefHeight="31.0" prefWidth="122.0" text="S+レベル" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="230.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="text_field_win" layoutX="198.0" layoutY="30.0" prefHeight="31.0" prefWidth="65.0" text="0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="text_field_lose" layoutX="198.0" layoutY="70.0" prefHeight="31.0" prefWidth="65.0" text="0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="text_field_rank_point" layoutX="198.0" layoutY="190.0" prefHeight="31.0" prefWidth="65.0" text="0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="text_field_splus_level" layoutX="198.0" layoutY="230.0" prefHeight="31.0" prefWidth="65.0" text="0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </TextField>
+        <ToggleButton fx:id="button_c" layoutX="198.0" layoutY="109.0" minWidth="35.0" onAction="#button_c_action" prefHeight="33.0" prefWidth="65.0" selected="true" text="C">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <toggleGroup>
+            <ToggleGroup fx:id="group_rank" />
+         </toggleGroup>
+        </ToggleButton>
+        <ToggleButton fx:id="button_b" layoutX="273.0" layoutY="109.0" onAction="#button_b_action" prefHeight="33.0" prefWidth="65.0" text="B" toggleGroup="$group_rank">
+         <font>
+            <Font size="15.0" />
+         </font>
+        </ToggleButton>
+        <ToggleButton fx:id="button_a" layoutX="348.0" layoutY="109.0" onAction="#button_a_action" prefHeight="33.0" prefWidth="65.0" text="A" toggleGroup="$group_rank">
+         <font>
+            <Font size="15.0" />
+         </font>
+        </ToggleButton>
+      <ToggleButton fx:id="button_s" layoutX="198.0" layoutY="157.0" mnemonicParsing="false" onAction="#button_s_action" prefHeight="33.0" prefWidth="65.0" text="S" toggleGroup="$group_rank" AnchorPane.topAnchor="150.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </ToggleButton>
+      <ToggleButton fx:id="button_splus" layoutX="273.0" layoutY="150.0" mnemonicParsing="false" onAction="#button_splus_action" prefHeight="33.0" prefWidth="65.0" text=" S+" toggleGroup="$group_rank">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </ToggleButton>
+      <Button fx:id="button_start" layoutX="198.0" layoutY="300.0" mnemonicParsing="false" onAction="#button_start_action" prefHeight="31.0" prefWidth="65.0" text="Start">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Label layoutX="30.0" layoutY="286.0" prefHeight="31.0" prefWidth="150.0" text="スタートボタン" AnchorPane.topAnchor="300.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
