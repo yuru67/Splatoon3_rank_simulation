@@ -73,31 +73,31 @@ public class Simulation_home_controller {
     @FXML
     void button_a_action(ActionEvent event) {
     	rank = "A-";
-        System.out.println("Pushed [A]");
+//        System.out.println("Pushed [A]");
     }
 
     @FXML
     void button_b_action(ActionEvent event) {
     	rank = "B-";
-        System.out.println("Pushed [B]");
+//        System.out.println("Pushed [B]");
     }
 
     @FXML
     void button_c_action(ActionEvent event) {
     	rank = "C-";
-        System.out.println("Pushed [C]");
+//        System.out.println("Pushed [C]");
     }
 
     @FXML
     void button_s_action(ActionEvent event) {
     	rank = "S";
-        System.out.println("Pushed [S]");
+//        System.out.println("Pushed [S]");
     }
 
     @FXML
     void button_splus_action(ActionEvent event) {
     	rank = "S+";
-        System.out.println("Pushed [S+]");
+//        System.out.println("Pushed [S+]");
     }
 
     @FXML
@@ -142,14 +142,12 @@ public class Simulation_home_controller {
 		Simulation_result_controller result_con = loader.<Simulation_result_controller>getController();
 		
 		//リザルト画面にシミュレーション結果のテキスト入れる
-		result_con.text_area_result.appendText("setText test");
+//		result_con.text_area_result.appendText("setText test");
 		for(int i = 0; i < result_text_list.size(); i++) {
 			result_con.text_area_result.appendText(result_text_list.get(i));
 		}
 		//テキスト編集不可
 		result_con.text_area_result.setEditable(false);
-    	System.out.println(result_con.text_area_result.getText());
-		
 		stage.setTitle("Simulation Result");
 		stage.setScene(scene);
 		stage.showAndWait();

@@ -9,7 +9,7 @@
    <center>
       <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <content>
-            <TextArea fx:id="text_area_result" prefHeight="398.0" prefWidth="598.0" text="Test&#10;&#10;Hello World&#10;">
+            <TextArea fx:id="text_area_result" prefHeight="398.0" prefWidth="598.0" text="&#10;">
                <font>
                   <Font size="15.0" />
                </font>
